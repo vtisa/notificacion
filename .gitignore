@@ -1,0 +1,34 @@
+# Node modules (librerías instaladas con npm)
+node_modules/
+
+# Variables de entorno
+.env
+
+# Archivos de logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Directorios temporales
+tmp/
+temp/
+
+# Caché de npm
+.npm/
+
+# Configuraciones de sistema operativo
+.DS_Store    # macOS
+Thumbs.db    # Windows
+
+# Configuración de IDEs
+.vscode/
+.idea/
+
+# Archivos de compilación (si usas TypeScript en el futuro)
+dist/
+build/
+
+# Dependencias de Render (solo si se crean automáticamente)
+render.yaml
