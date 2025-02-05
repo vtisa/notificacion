@@ -22,6 +22,11 @@ io.on('connection', (socket) => {
   console.log('Nuevo cliente conectado:', socket.id);
 
   socket.on('createRoom', ({ coordinatorName, winningRules, prizes }, callback) => {
+    if (typeof callback !== 'function') {
+      console.error('Error: callback no es una función');
+      return;
+    }
+  
     const roomCode = Math.random().toString(36).substring(2, 8).toUpperCase();
     rooms[roomCode] = {
       coordinator: socket.id,
@@ -32,9 +37,11 @@ io.on('connection', (socket) => {
       prizes,
       currentPrizeIndex: 0
     };
+  
     socket.join(roomCode);
     callback({ roomCode, coordinatorName });
   });
+  
 
   socket.on('joinRoom', ({ roomCode, playerName }, callback) => {
     if (rooms[roomCode]) {
